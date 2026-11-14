@@ -1,17 +1,7 @@
-def is_prime(n: int) -> bool:
-    """Проверяет, является ли число n простым."""
-    if n < 2:                 # Числа меньше 2 — не простые
-        return False          # Выход: False
+def factorial(n: int) -> int:
+    if n <= 1:                # База: факториал 1 и 0 равен 1
+        return 1              # Останавливаем рекурсию
     
-    for i in range(2, int(n ** 0.5) + 1):  # Идём от 2 до корня из n
-        if n % i == 0:        # Если делится без остатка
-            return False      # Значит, не простое
-    
-    return True               # Делителей нет — простое
+    return n * factorial(n - 1)  # Умножаем n на факториал (n-1)
 
-
-for num in range(1, 20):      # Числа от 1 до 19
-    if is_prime(num):         # Если простое
-        print(num, end=" ")   # Печатаем через пробел
-
-# 2 3 5 7 11 13 17 19
+print(factorial(5))           # 120 (5 * 4 * 3 * 2 * 1)
